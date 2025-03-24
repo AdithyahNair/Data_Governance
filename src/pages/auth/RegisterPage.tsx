@@ -4,14 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Input } from "../../components/ui/input";
 import { Button } from "../../components/ui/button";
 import { Checkbox } from "../../components/ui/checkbox";
-import {
-  ArrowRight,
-  ArrowLeft,
-  Bell,
-  Bookmark,
-  Share2,
-  Zap,
-} from "lucide-react";
+import { ArrowRight, ArrowLeft, Zap } from "lucide-react";
 import { useAuth } from "../../contexts/AuthContext";
 
 export default function RegisterPage() {

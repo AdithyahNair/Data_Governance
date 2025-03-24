@@ -3,14 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Input } from "../../components/ui/input";
 import { Button } from "../../components/ui/button";
-import {
-  ArrowRight,
-  ArrowLeft,
-  Bell,
-  Bookmark,
-  Share2,
-  Zap,
-} from "lucide-react";
+import { ArrowRight, ArrowLeft, Zap } from "lucide-react";
 import { useAuth } from "../../contexts/AuthContext";
 
 export default function LoginPage() {
