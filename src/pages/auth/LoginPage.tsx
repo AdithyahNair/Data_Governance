@@ -198,11 +198,11 @@ export default function LoginPage() {
       </div>
 
       {/* Right side - AI Regulation News Headlines */}
-      <div className="w-1/2 flex items-center justify-center">
+      <div className="w-1/2 bg-gradient-to-br from-purple-900 via-indigo-900 to-violet-900 flex items-center justify-center p-8">
         <motion.div
-          className="w-[90vh] h-[90vh] max-h-screen rounded-3xl shadow-xl overflow-hidden bg-gradient-to-br from-purple-900 via-indigo-800 to-violet-900 border-0 relative"
-          initial={{ scale: 0.95 }}
-          animate={{ scale: 1 }}
+          className="w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden bg-gradient-to-br from-purple-800/50 via-indigo-800/50 to-violet-800/50 backdrop-blur-xl border border-white/10"
+          initial={{ scale: 0.95, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.5 }}
           onMouseEnter={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}
@@ -210,7 +210,7 @@ export default function LoginPage() {
           {/* Animated background elements */}
           <div className="absolute inset-0 overflow-hidden">
             <motion.div
-              className="absolute w-64 h-64 rounded-full bg-pink-500/20 blur-3xl"
+              className="absolute w-96 h-96 rounded-full bg-pink-500/20 blur-3xl"
               animate={{
                 x: [0, 100, 50, 0],
                 y: [0, 50, 100, 0],
@@ -222,7 +222,7 @@ export default function LoginPage() {
               }}
             />
             <motion.div
-              className="absolute right-0 bottom-0 w-96 h-96 rounded-full bg-blue-500/20 blur-3xl"
+              className="absolute right-0 bottom-0 w-[500px] h-[500px] rounded-full bg-blue-500/20 blur-3xl"
               animate={{
                 x: [0, -80, -40, 0],
                 y: [0, -60, -120, 0],
@@ -235,170 +235,121 @@ export default function LoginPage() {
             />
           </div>
 
-          {/* Top header section */}
-          <div className="absolute top-0 left-0 right-0 p-6 z-20">
-            <div className="flex justify-between items-center">
-              <div className="flex items-center space-x-3">
-                <div className="bg-white rounded-full p-2">
-                  <Zap size={20} className="text-violet-700" />
-                </div>
-                <span className="text-white font-bold text-lg tracking-wide">
-                  PRISM
-                </span>
+          {/* Content Container */}
+          <div className="relative z-10 p-8">
+            {/* Header */}
+            <div className="flex items-center space-x-3 mb-8">
+              <div className="bg-white rounded-full p-2">
+                <Zap size={24} className="text-violet-700" />
               </div>
+              <span className="text-white font-bold text-xl tracking-wide">
+                PRISM
+              </span>
             </div>
-          </div>
 
-          {/* Top title section */}
-          <div className="absolute top-20 left-6 z-10 max-w-sm">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3, duration: 0.8 }}
-            >
-              <div className="inline-block px-3 py-1 bg-white/20 backdrop-blur-md rounded-lg text-xs font-medium text-white mb-3 border border-white/20">
+            {/* Title Section */}
+            <div className="mb-12">
+              <div className="inline-block px-4 py-2 bg-white/10 backdrop-blur-md rounded-lg text-sm font-medium text-white mb-4 border border-white/20">
                 AI REGULATION RADAR
               </div>
-              <h2 className="text-4xl font-bold text-white mb-3 leading-tight">
+              <h2 className="text-5xl font-bold mb-4 leading-tight">
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 to-purple-300">
                   Shaping the Future of AI Governance
                 </span>
               </h2>
-              <p className="text-white/80 text-sm mb-5">
+              <p className="text-white/80 text-lg">
                 Stay ahead with critical developments in AI regulation, ethics,
                 and policy frameworks worldwide.
               </p>
-              <motion.button
-                className="px-4 py-2 bg-gradient-to-r from-violet-600 to-indigo-600 rounded-lg text-white text-sm font-medium flex items-center space-x-2 group"
-                whileHover={{
-                  scale: 1.05,
-                  boxShadow: "0 0 15px rgba(139, 92, 246, 0.5)",
-                }}
-              >
-                <span>Checkout our Website</span>
-                <motion.span
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                >
-                  →
-                </motion.span>
-              </motion.button>
-            </motion.div>
-          </div>
-
-          {/* Centered Headlines Display */}
-          <div
-            className="absolute inset-0 flex items-center z-10"
-            style={{ marginLeft: "55px" }}
-          >
-            <div className="w-full max-w-md mx-10">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentIndex}
-                  initial={{ opacity: 0, scale: 0.9, y: 30 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.9, y: -30 }}
-                  transition={{ duration: 0.6 }}
-                  className="w-[68vh]"
-                  style={{ marginTop: "220px" }}
-                >
-                  <motion.div
-                    className={`bg-gradient-to-br ${headlines[currentIndex].color} p-6 rounded-2xl shadow-xl border border-white/20 backdrop-blur-md w-full`}
-                    whileHover={{
-                      scale: 1.03,
-                      boxShadow: "0 0 30px rgba(109, 40, 217, 0.4)",
-                    }}
-                  >
-                    <div className="flex justify-between items-start mb-3">
-                      <div className="flex items-center space-x-2">
-                        <div className="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm rounded-md text-xs font-bold text-white">
-                          {headlines[currentIndex].category}
-                        </div>
-                        <div className="px-2 py-1 bg-white/10 backdrop-blur-sm rounded-md text-xs text-white">
-                          {headlines[currentIndex].tag}
-                        </div>
-                      </div>
-                    </div>
-
-                    <h3 className="text-xl font-bold text-white mb-2">
-                      {headlines[currentIndex].title}
-                    </h3>
-
-                    <p className="text-white/90 text-sm mb-4 leading-relaxed">
-                      {headlines[currentIndex].subtitle}
-                    </p>
-
-                    <div className="flex justify-between items-center">
-                      <div className="flex space-x-2">
-                        {headlines.map((_, idx) => (
-                          <motion.div
-                            key={idx}
-                            className={`w-2 h-2 rounded-full ${
-                              idx === currentIndex ? "bg-white" : "bg-white/40"
-                            }`}
-                            animate={
-                              idx === currentIndex ? { scale: [1, 1.2, 1] } : {}
-                            }
-                            transition={{ duration: 1, repeat: Infinity }}
-                          />
-                        ))}
-                      </div>
-                      <motion.button
-                        className="px-4 py-2 bg-white/20 backdrop-blur-md rounded-lg text-white text-xs font-medium flex items-center space-x-2"
-                        whileHover={{
-                          backgroundColor: "rgba(255,255,255,0.3)",
-                        }}
-                      >
-                        <span>Read full analysis</span>
-                        <motion.span
-                          animate={{ x: [0, 3, 0] }}
-                          transition={{ duration: 1.5, repeat: Infinity }}
-                        >
-                          →
-                        </motion.span>
-                      </motion.button>
-                    </div>
-                  </motion.div>
-                </motion.div>
-              </AnimatePresence>
             </div>
-          </div>
 
-          {/* Navigation buttons */}
-          <div className="absolute bottom-16 left-0 right-0 flex justify-center space-x-3 z-20">
-            <motion.button
-              onClick={prevSlide}
-              className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white border border-white/20"
-              whileHover={{
-                scale: 1.1,
-                backgroundColor: "rgba(255,255,255,0.2)",
-              }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <ArrowLeft size={18} />
-            </motion.button>
-            <motion.button
-              onClick={nextSlide}
-              className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white border border-white/20"
-              whileHover={{
-                scale: 1.1,
-                backgroundColor: "rgba(255,255,255,0.2)",
-              }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <ArrowRight size={18} />
-            </motion.button>
-          </div>
+            {/* Headlines Carousel */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentIndex}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.4 }}
+                className="mb-8"
+              >
+                <motion.div
+                  className={`bg-gradient-to-br ${headlines[currentIndex].color} p-8 rounded-2xl shadow-xl border border-white/20 backdrop-blur-md`}
+                  whileHover={{
+                    scale: 1.02,
+                    boxShadow: "0 0 30px rgba(109, 40, 217, 0.4)",
+                  }}
+                >
+                  <div className="flex items-center space-x-2 mb-4">
+                    <div className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-md text-xs font-bold text-white">
+                      {headlines[currentIndex].category}
+                    </div>
+                    <div className="px-2 py-1 bg-white/10 backdrop-blur-sm rounded-md text-xs text-white">
+                      {headlines[currentIndex].tag}
+                    </div>
+                  </div>
 
-          {/* Bottom status bar */}
-          <div className="absolute bottom-0 left-0 right-0 h-10 bg-black/30 backdrop-blur-md flex items-center justify-center text-white/60 text-xs z-10">
-            <span className="mx-2">•</span>
-            <span>
-              Data sources: Global AI Policy Institute, UN Tech Council, EU
-              Commission
-            </span>
-            <span className="mx-2">•</span>
-            <span>Next briefing: March 24, 2025</span>
+                  <h3 className="text-2xl font-bold text-white mb-3">
+                    {headlines[currentIndex].title}
+                  </h3>
+
+                  <p className="text-white/90 text-base leading-relaxed mb-6">
+                    {headlines[currentIndex].subtitle}
+                  </p>
+
+                  <div className="flex justify-between items-center">
+                    <div className="flex space-x-2">
+                      {headlines.map((_, idx) => (
+                        <motion.div
+                          key={idx}
+                          className={`w-2 h-2 rounded-full ${
+                            idx === currentIndex ? "bg-white" : "bg-white/40"
+                          }`}
+                          animate={
+                            idx === currentIndex ? { scale: [1, 1.2, 1] } : {}
+                          }
+                          transition={{ duration: 1, repeat: Infinity }}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Navigation */}
+            <div className="flex justify-center space-x-4">
+              <motion.button
+                onClick={prevSlide}
+                className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white border border-white/20"
+                whileHover={{
+                  scale: 1.1,
+                  backgroundColor: "rgba(255,255,255,0.2)",
+                }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <ArrowLeft size={20} />
+              </motion.button>
+              <motion.button
+                onClick={nextSlide}
+                className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white border border-white/20"
+                whileHover={{
+                  scale: 1.1,
+                  backgroundColor: "rgba(255,255,255,0.2)",
+                }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <ArrowRight size={20} />
+              </motion.button>
+            </div>
+
+            {/* Footer */}
+            <div className="mt-8 pt-6 border-t border-white/10 text-white/60 text-sm flex items-center justify-between">
+              <span>
+                Data sources: Global AI Policy Institute, UN Tech Council
+              </span>
+              <span>Next briefing: March 24, 2025</span>
+            </div>
           </div>
         </motion.div>
       </div>
