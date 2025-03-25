@@ -97,13 +97,13 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-row overflow-hidden">
+    <div className="min-h-screen flex flex-row overflow-hidden bg-white">
       {/* Left side - Login form */}
-      <div className="w-1/2 p-8 flex flex-col justify-center bg-white">
+      <div className="w-1/2 p-8 flex flex-col justify-center">
         <div className="mx-auto w-full max-w-md">
           <div className="mb-8">
             <a href="/" className="text-xl font-bold tracking-tighter">
-              Prism by BlockConvey
+              PRISM by Block Convey
             </a>
           </div>
 
@@ -198,9 +198,9 @@ export default function LoginPage() {
       </div>
 
       {/* Right side - AI Regulation News Headlines */}
-      <div className="w-1/2 bg-gradient-to-br from-purple-900 via-indigo-900 to-violet-900 flex items-center justify-center p-8">
+      <div className="w-1/2 flex items-center justify-center p-8">
         <motion.div
-          className="w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden bg-gradient-to-br from-purple-800/50 via-indigo-800/50 to-violet-800/50 backdrop-blur-xl border border-white/10"
+          className="w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden bg-gradient-to-br from-purple-800 via-indigo-800 to-violet-800 backdrop-blur-xl border border-white/10"
           initial={{ scale: 0.95, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.5 }}
@@ -239,9 +239,11 @@ export default function LoginPage() {
           <div className="relative z-10 p-8">
             {/* Header */}
             <div className="flex items-center space-x-3 mb-8">
-              <div className="bg-white rounded-full p-2">
-                <Zap size={24} className="text-violet-700" />
-              </div>
+              <img
+                src="../../../public/Logo.svg"
+                alt="Logo"
+                className="w-6 h-6"
+              />
               <span className="text-white font-bold text-xl tracking-wide">
                 PRISM
               </span>
@@ -312,6 +314,18 @@ export default function LoginPage() {
                         />
                       ))}
                     </div>
+                    <motion.button
+                      className="px-4 py-2 bg-white/20 backdrop-blur-md rounded-lg text-white text-sm font-medium flex items-center space-x-2"
+                      whileHover={{ backgroundColor: "rgba(255,255,255,0.3)" }}
+                    >
+                      <span>Read full analysis</span>
+                      <motion.span
+                        animate={{ x: [0, 3, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity }}
+                      >
+                        →
+                      </motion.span>
+                    </motion.button>
                   </div>
                 </motion.div>
               </motion.div>
